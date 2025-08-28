@@ -2,7 +2,7 @@
 import requests, json
 
 OLLAMA_URL = "http://127.0.0.1:11434/api/generate"
-SYSTEM = "You are a helpful assistant. Answer based only on the provided context. If the context doesn't contain direct information to answer the question, simply say 'I don't know.' Do not provide general knowledge or suggest related topics."
+SYSTEM = "Answer the question using the provided context. Use the information from the context to give a helpful and complete answer. If the context contains relevant information, use it to explain the concept. Only say 'I don't know' if the context contains no relevant information at all."
 
 def build_prompt(question: str, contexts: list[str]) -> str:
     context_block = "\n\n---\n\n".join(contexts)

@@ -28,21 +28,19 @@ with st.sidebar:
         st.rerun()
 
 # Chat display
-chat_container = st.container(height=500)
-with chat_container:
-    if st.session_state.messages:
-        for message in st.session_state.messages:
-            with st.chat_message(message["role"]):
-                st.write(message['content'])
-                if message["role"] == "assistant" and message.get("citations"):
-                    with st.expander("📚 Sources"):
-                        for i, citation in enumerate(message["citations"], 1):
-                            st.markdown(f"**{i}. {citation.get('source_file', 'Unknown')}**")
-                            st.markdown(f"> {citation.get('snippet', '')}")
-                            if citation.get('link'):
-                                st.markdown(f"[View Document]({citation['link']})")
-    else:
-        st.info("👋 Welcome! Ask me anything about your documents.")
+if st.session_state.messages:
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+            st.write(message['content'])
+            if message["role"] == "assistant" and message.get("citations"):
+                with st.expander("📚 Sources"):
+                    for i, citation in enumerate(message["citations"], 1):
+                        st.markdown(f"**{i}. {citation.get('source_file', 'Unknown')}**")
+                        st.markdown(f"> {citation.get('snippet', '')}")
+                        if citation.get('link'):
+                            st.markdown(f"[View Document]({citation['link']})")
+else:
+    st.info("👋 Welcome! Ask me anything about your documents.")
 
 # Chat input
 if question := st.chat_input("Ask a question..."):

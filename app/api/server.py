@@ -10,7 +10,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from ingestion.drive_ingestor import process_drive_pdfs
 from indexing.elasticsearch_indexer import index_documents
 from retrieval.search import hybrid_search, elser_search
-from retrieval.enhanced_search import multi_strategy_search
+
 from llm.generate import build_prompt, ollama_generate
 
 app = FastAPI()
@@ -84,3 +84,4 @@ def query(body: QueryIn):
     } for i, h in enumerate(scored)]
 
     return {"answer": answer, "citations": citations, "used_mode": body.mode}
+

@@ -6,6 +6,9 @@ pydantic
 python-dotenv
 sentence-transformers
 PyPDF2
+PyMuPDF
+pytesseract
+Pillow
 requests
 tqdm
 httpx
