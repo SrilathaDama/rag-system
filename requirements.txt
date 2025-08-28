@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+streamlit
+elasticsearch==8.12.0
+pydantic
+python-dotenv
+sentence-transformers
+PyPDF2
+requests
+tqdm
+httpx
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
