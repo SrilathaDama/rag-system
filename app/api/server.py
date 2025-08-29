@@ -26,6 +26,10 @@ class IngestOut(BaseModel):
     downloaded_docs: int
     indexed_docs: int
 
+@app.get("/")
+def root():
+    return {"message": "RAG System API", "docs": "/docs", "health": "/healthz"}
+
 # ---------- Health ----------
 @app.get("/healthz")
 def healthz():
