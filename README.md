@@ -154,6 +154,33 @@ ollama list
 - **RRF**: Weighted fusion (BM25: 3.0x, Dense: 1.5x, ELSER: 1.0x)
 - **OCR Fixes**: Automatic text cleaning for PDF extraction issues
 
+## Testing
+
+### Run Unit Tests
+```bash
+# Test ingestion
+python -m pytest tests/test_ingestion.py -v
+
+# Test retrieval
+python -m pytest tests/test_retrieval.py -v
+
+# Test LLM integration
+python tests/test_llm.py
+
+# Test Elasticsearch
+python tests/test_es_minimal.py
+
+# Run all tests
+python -m pytest tests/ -v
+```
+
+### Manual Testing
+```bash
+# Test API endpoints
+curl http://localhost:8000/healthz
+curl -X POST "http://localhost:8000/query" -H "Content-Type: application/json" -d '{"question": "What is binary search?", "mode": "hybrid"}'
+```
+
 ## License
 
 MIT License
